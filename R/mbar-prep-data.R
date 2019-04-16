@@ -36,19 +36,21 @@ mbar_prep_data <- function(data, id, products) {
     max()
 
   result <-
-    group_items %>%
-    tidyr::separate(items, into = paste0("item_", seq_len(max_items)), sep = ",") %>%
-    dplyr::inner_join(count_items, by = rlang::quo_name(col_id)) %>%
-    dplyr::arrange(n) %>%
-    dplyr::select(-n)
+    suppressWarnings(
+      group_items %>%
+      tidyr::separate(items, into = paste0("item_", seq_len(max_items)), sep = ",") %>%
+      dplyr::inner_join(count_items, by = rlang::quo_name(col_id)) %>%
+      dplyr::arrange(n) %>%
+      dplyr::select(-n)
+    )
 
 
   replace_na_list <- as.list(rep("", max_items))
   names(replace_na_list) <- names(result)[-1]
 
-
-  result %<>%
+  transaction_data <-
+    result %>%
     tidyr::replace_na(replace_na_list)
 
-  return(result)
+  return(transaction_data[, -1])
 }
