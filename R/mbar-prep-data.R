@@ -4,7 +4,7 @@
 #'
 #' @param data A \code{data.frame} or \code{tibble}.
 #' @param id Unique id for the transaction.
-#' @param Product/items part of the transaction.
+#' @param Product items part of the transaction.
 #'
 #' @importFrom magrittr %>% %<>%
 #'
