@@ -89,3 +89,7 @@ mbar_prep_data(mba_sample, InvoiceNo, Description)
 #> #   item_80 <chr>, item_81 <chr>, item_82 <chr>, item_83 <chr>,
 #> #   item_84 <chr>, item_85 <chr>
 ```
+
+Please note that the ‘mbar’ project is released with a [Contributor Code
+of Conduct](CODE_OF_CONDUCT.md). By contributing to this project, you
+agree to abide by its terms.
