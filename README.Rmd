@@ -1,0 +1,54 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+# mbar
+
+[![Travis build status](https://travis-ci.org/rsquaredacademy/mbar.svg?branch=master)](https://travis-ci.org/rsquaredacademy/mbar) [![AppVeyor build status](https://ci.appveyor.com/api/projects/status/github/rsquaredacademy/mbar?branch=master&svg=true)](https://ci.appveyor.com/project/rsquaredacademy/mbar) [![Coverage status](https://codecov.io/gh/rsquaredacademy/mbar/branch/master/graph/badge.svg)](https://codecov.io/github/rsquaredacademy/mbar?branch=master)
+
+> Data preprocessing for market basket analysis.
+
+## Installation
+
+```{r installation, eval = FALSE}
+# Install development version from GitHub
+# install.packages("devtools")
+devtools::install_github("rsquaredacademy/mbar")
+```
+
+## Usage
+
+```{r load, eval=TRUE, echo=FALSE}
+library(mbar)
+```
+
+```{r demo, fig.align='center', echo=FALSE}
+knitr::include_graphics("mba_pre_process.png")
+```
+
+<br>
+
+`mbar_prep_data()` will modify the data from one row per item to 
+one row per transaction. It takes 3 inputs:
+
+- data set
+- invoice number column
+- product/item column
+
+```{r usage}
+# original data
+head(mba_sample)
+
+# modified data
+mbar_prep_data(mba_sample, InvoiceNo, Description)
+```

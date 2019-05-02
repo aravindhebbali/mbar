@@ -11,8 +11,12 @@ mbar_prep_data(data, id, products)
 
 \item{id}{Unique id for the transaction.}
 
-\item{Product}{items part of the transaction.}
+\item{products}{items part of the transaction.}
 }
 \description{
 Prepares transaction data for analysis.
+}
+\examples{
+mbar_prep_data(mba_sample, InvoiceNo, Description)
+
 }
