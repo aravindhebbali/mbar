@@ -10,7 +10,7 @@ status](https://ci.appveyor.com/api/projects/status/github/rsquaredacademy/mbar?
 [![Coverage
 status](https://codecov.io/gh/rsquaredacademy/mbar/branch/master/graph/badge.svg)](https://codecov.io/github/rsquaredacademy/mbar?branch=master)
 
-> Data preprocessing for market basket analysis.
+> Helper functions used in our online R courses
 
 ## Installation
 
@@ -21,6 +21,8 @@ devtools::install_github("rsquaredacademy/mbar")
 ```
 
 ## Usage
+
+### Data pre-processing for Market Basket Analysis
 
 <img src="mba_pre_process.png" width="100%" style="display: block; margin: auto;" />
 
@@ -88,6 +90,30 @@ mbar_prep_data(mba_sample, InvoiceNo, Description)
 #> #   item_76 <chr>, item_77 <chr>, item_78 <chr>, item_79 <chr>,
 #> #   item_80 <chr>, item_81 <chr>, item_82 <chr>, item_83 <chr>,
 #> #   item_84 <chr>, item_85 <chr>
+```
+
+### Optimal Complexity Parameter
+
+`optimal_cp()` will extract the optimal complexity parameter from an
+object of class `rpart` for pruning a tree.
+
+``` r
+# grow tree
+model   <- rpart::rpart(Species ~ ., data = iris)
+best_cp <- optimal_cp(model)
+
+# prune tree
+rpart::prune(model, cp = best_cp)
+#> n= 150 
+#> 
+#> node), split, n, loss, yval, (yprob)
+#>       * denotes terminal node
+#> 
+#> 1) root 150 100 setosa (0.33333333 0.33333333 0.33333333)  
+#>   2) Petal.Length< 2.45 50   0 setosa (1.00000000 0.00000000 0.00000000) *
+#>   3) Petal.Length>=2.45 100  50 versicolor (0.00000000 0.50000000 0.50000000)  
+#>     6) Petal.Width< 1.75 54   5 versicolor (0.00000000 0.90740741 0.09259259) *
+#>     7) Petal.Width>=1.75 46   1 virginica (0.00000000 0.02173913 0.97826087) *
 ```
 
 Please note that the ‘mbar’ project is released with a [Contributor Code

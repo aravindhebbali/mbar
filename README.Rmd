@@ -16,7 +16,7 @@ knitr::opts_chunk$set(
 
 [![Travis build status](https://travis-ci.org/rsquaredacademy/mbar.svg?branch=master)](https://travis-ci.org/rsquaredacademy/mbar) [![AppVeyor build status](https://ci.appveyor.com/api/projects/status/github/rsquaredacademy/mbar?branch=master&svg=true)](https://ci.appveyor.com/project/rsquaredacademy/mbar) [![Coverage status](https://codecov.io/gh/rsquaredacademy/mbar/branch/master/graph/badge.svg)](https://codecov.io/github/rsquaredacademy/mbar?branch=master)
 
-> Data preprocessing for market basket analysis.
+> Helper functions used in our online R courses
 
 ## Installation
 
@@ -27,6 +27,8 @@ devtools::install_github("rsquaredacademy/mbar")
 ```
 
 ## Usage
+
+### Data pre-processing for Market Basket Analysis
 
 ```{r load, eval=TRUE, echo=FALSE}
 library(mbar)
@@ -51,6 +53,20 @@ head(mba_sample)
 
 # modified data
 mbar_prep_data(mba_sample, InvoiceNo, Description)
+```
+
+### Optimal Complexity Parameter
+
+`optimal_cp()` will extract the optimal complexity parameter from an object 
+of class `rpart` for pruning a tree.
+
+```{r optimcp}
+# grow tree
+model   <- rpart::rpart(Species ~ ., data = iris)
+best_cp <- optimal_cp(model)
+
+# prune tree
+rpart::prune(model, cp = best_cp)
 ```
 
 Please note that the 'mbar' project is released with a [Contributor Code of Conduct](CODE_OF_CONDUCT.md). By contributing to this project, you agree to abide by its terms.

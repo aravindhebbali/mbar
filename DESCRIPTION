@@ -1,10 +1,10 @@
 Package: mbar
 Type: Package
-Title: Helper Functions for Market Basket Analysis
+Title: Rsquared Academy Helper Functions 
 Version: 0.1.0
 Authors@R: person("Aravind", "Hebbali", email = "hebbali.aravind@gmail.com", role = c("aut", "cre"),
     comment = c(ORCID = "0000-0001-9220-9669"))
-Description: Helper function for preprocessing data for market basket analysis.
+Description: Helper functions used in online R courses offered by Rsquared Academy.
 Depends:
     R(>= 3.2)
 Imports:
@@ -14,9 +14,10 @@ Imports:
     tidyr
 Suggests: 
     covr,
+    rpart,
     testthat
 License: MIT + file LICENSE
-BugReports: https://github.com/rsquaredacademy/descriptr/issues
+BugReports: https://github.com/rsquaredacademy/mbar/issues
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 6.1.1
