@@ -2,5 +2,12 @@
 
 export(mbar_prep_data)
 export(optimal_cp)
+export(plot_lift_curve)
+export(plot_prec_rec)
+export(plot_roc)
+export(plot_sens_spec)
+export(tree_auc)
+export(tree_prediction)
 importFrom(magrittr,"%<>%")
 importFrom(magrittr,"%>%")
+importFrom(rlang,"!!")

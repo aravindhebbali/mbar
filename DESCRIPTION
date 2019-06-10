@@ -9,13 +9,16 @@ Depends:
     R(>= 3.2)
 Imports:
     dplyr,
+    ggplot2,
     magrittr,
     rlang,
+    ROCR,
     tidyr
 Suggests: 
     covr,
     rpart,
-    testthat
+    testthat,
+    vdiffr
 License: MIT + file LICENSE
 BugReports: https://github.com/rsquaredacademy/mbar/issues
 Encoding: UTF-8
