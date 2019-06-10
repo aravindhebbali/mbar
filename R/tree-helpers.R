@@ -33,9 +33,9 @@ optimal_cp <- function(model) {
 #'
 #' Predict class probability on a data set.
 #'
-#' @param An object of class \code{rpart}.
-#' @param A \code{data.frame} or \code{tibble}.
-#' @param Response variable.
+#' @param model An object of class \code{rpart}.
+#' @param data A \code{data.frame} or \code{tibble}.
+#' @param response Response variable.
 #'
 #' @examples
 #' model <- rpart::rpart(Attrition ~ ., data = hr_train)
@@ -45,13 +45,13 @@ optimal_cp <- function(model) {
 #'
 #' @export
 #'
-tree_prediction <- function(model, test_data, response) {
+tree_prediction <- function(model, data, response) {
 
   resp_var <- rlang::enquo(response)
-  resp <- dplyr::pull(test_data, !!resp_var)
+  resp <- dplyr::pull(data, !!resp_var)
 
   model %>%
-    predict(newdata = test_data, type = "prob") %>%
+    stats::predict(newdata = data, type = "prob") %>%
     as.data.frame() %>%
     dplyr::select(2) %>%
     ROCR::prediction(resp)
@@ -73,7 +73,7 @@ tree_prediction <- function(model, test_data, response) {
 tree_auc <- function(perform) {
   perform %>%
     ROCR::performance(measure = "auc") %>%
-    slot("y.values") %>%
+    methods::slot("y.values") %>%
     magrittr::extract2(1)
 }
 
@@ -136,22 +136,18 @@ plot_lift_curve <- function(perform, line_color = "blue") {
 
 }
 
-#' Generic plot function
-#'
-#' A generic plot function used to generate validation plots.
-#'
 plot_perform <- function(perform, y, x, line_color = "blue") {
 
 	measures <- ROCR::performance(perform, measure = y, x.measure = x)
 
   yval <-
     measures %>%
-    slot("y.values") %>%
+    methods::slot("y.values") %>%
     magrittr::extract2(1)
 
   xval <-
     measures %>%
-    slot("x.values") %>%
+    methods::slot("x.values") %>%
     magrittr::extract2(1)
 
   data.frame(yval, xval) %>%

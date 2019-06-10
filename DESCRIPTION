@@ -11,8 +11,10 @@ Imports:
     dplyr,
     ggplot2,
     magrittr,
+    methods,
     rlang,
     ROCR,
+    stats,
     tidyr
 Suggests: 
     covr,

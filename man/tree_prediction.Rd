@@ -4,14 +4,14 @@
 \alias{tree_prediction}
 \title{Class probability prediction}
 \usage{
-tree_prediction(model, test_data, response)
+tree_prediction(model, data, response)
 }
 \arguments{
-\item{An}{object of class \code{rpart}.}
+\item{model}{An object of class \code{rpart}.}
 
-\item{A}{\code{data.frame} or \code{tibble}.}
+\item{data}{A \code{data.frame} or \code{tibble}.}
 
-\item{Response}{variable.}
+\item{response}{Response variable.}
 }
 \description{
 Predict class probability on a data set.
